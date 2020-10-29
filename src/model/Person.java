@@ -78,4 +78,10 @@ public class Person {
 		this.picture = picture;
 	}
 	
+	@Override
+	public String toString() {
+		String genderText=(gender==false ? "Female":"Male");
+		return "Name: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n";
+	}
+	
 }
