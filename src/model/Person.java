@@ -4,13 +4,13 @@ import java.time.LocalDate;
 public class Person {
 	private String id;	///Generator&text.
 	private String name; ///Text.
-	private String gender; ///Generator.
+	private boolean gender; ///Generator.
 	private LocalDate bornDate; ///Generator.
 	private double height; ///Generator. Conditional with the age
 	private String nationality; ///Array.
 	private String picture;
 	
-	public Person(String id, String name, String gender, LocalDate bornDate, double height, String nationality,
+	public Person(String id, String name, boolean gender, LocalDate bornDate, double height, String nationality,
 			String picture) {
 		super();
 		this.id = id;
@@ -38,11 +38,11 @@ public class Person {
 		this.name = name;
 	}
 
-	public String getGender() {
+	public boolean getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
 
