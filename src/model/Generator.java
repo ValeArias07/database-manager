@@ -12,8 +12,11 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import imports.InputReader;
-
+/**
+ * A very special import to do, without this, our program wasn't fast as
+ * it is now. To check more please enter to: https://github.com/williamfiset/FastJavaIO
+ */
+import imports.InputReader; 
 
 /**
  * LEER PORFAVOR.
@@ -151,15 +154,24 @@ public class Generator {
 		return LocalDate.of(years, month, day);
 	}
 
-
-	public LocalDate bornDate() {
-		int random=(int)(Math.random()*80); /// Genera un numero aleatorio de 0 a 80.
-		LocalDate newDate=INITIALYEAR.minus(random, ChronoUnit.YEARS); /// Le resta ese numero aleatorio a los anos de la fecha base.
-		newDate=newDate.minus(random%30, ChronoUnit.DAYS); /// Intento de generar un numero aleatorio basandose en el numero de anos sumados.
-		newDate=newDate.minus(random%12, ChronoUnit.MONTHS); //Igual que lo anterior
-		return newDate;
+	public void bornDate(int population) {
+		this.ages=new int[population];
+		int agesRangeMax[]= {14,24,54,64,120}, agesRangeMin[]= {0,15,24,54,64};
+		int maxValue=0, ageMove=0, random, total=0;
+		for (int j = 0; j < agesRangeMax.length ; j++) { //// Llena segun los intervalos de edad
+			
+			while(maxValue<=percentPeopleForAges[j] && total<population) { /// Llena hasta el porcentaje de cada categoria
+				random=(int)(Math.random()*agesRangeMax[ageMove]); ///Numero Aleatorio entre 0 al maximo
+				if(random!=0 && random>agesRangeMin[ageMove]) { /// Limitacion del numero desde el min hasta el max
+					ages[total]=2020-random; ////Asignacion de la fecha al array
+					maxValue++; /// Para ir llenando el contador de las personas
+					total++; /// Para ir llenando el array de fechas 
+				}
+			}
+		ageMove++;
+		maxValue=0;	
+		}	
 	}
-	
 	
 	public boolean gender() {
 		//// Como se supone que debe haber una distribucion igual de mujeres y hombres, se creo este condicional.
@@ -190,8 +202,6 @@ public class Generator {
 		}
 		return (double)Math.round(random * 100) / 100;
 	}
-	
-	
 	
 	public long getTotal() { ///Metodo para comprobar que efectivamente se crearon el numero n de personas.
 		return amountOfPeople;
