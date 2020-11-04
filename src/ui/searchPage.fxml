@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -95,6 +96,9 @@
       <ChoiceBox layoutX="386.0" layoutY="116.0" prefHeight="25.0" prefWidth="163.0" />
       <Label layoutX="33.0" layoutY="93.0" text="Write for search " />
       <Label layoutX="387.0" layoutY="93.0" text="Choose a criteria for searching" />
-      <ImageView fitHeight="68.0" fitWidth="559.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="72.0" fitWidth="535.0" layoutX="33.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../docs/searching.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>

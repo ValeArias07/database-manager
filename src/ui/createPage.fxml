@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +15,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="88.0" fitWidth="554.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="88.0" fitWidth="554.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../docs/create.png" />
+         </image></ImageView>
       <Label layoutX="88.0" layoutY="136.0" prefHeight="17.0" prefWidth="181.0" text="Please, complete all the labels:" />
       <VBox layoutX="38.0" layoutY="161.0" prefHeight="217.0" prefWidth="272.0" style="-fx-border-color: #000000;">
          <children>
