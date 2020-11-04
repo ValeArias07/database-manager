@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutY="158.0" prefHeight="117.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="BASELINE_RIGHT" layoutX="33.0" layoutY="11.0" prefHeight="217.0" prefWidth="300.0" style="-fx-border-color: #000000; -fx-background-color: #ffffff;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="78.0" text="Name:   " textFill="#003b6b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="194.0" text="                        " />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="77.0" text="Gender:       " textFill="#003b6b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="195.0" text="                        " />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="95.0" text="Date of Birth:  " textFill="#003b6b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="175.0" text="                        " />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Heigh:             " textFill="#003b6b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="184.0" text="                        " />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Nationality:     " textFill="#003b6b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="185.0" text="                        " />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <WebView layoutX="385.0" layoutY="11.0" prefHeight="153.0" prefWidth="163.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="153.0" layoutX="384.0" layoutY="11.0" smooth="false" stroke="BLACK" strokeType="INSIDE" width="163.0" />
+            <Button layoutX="383.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Edit " />
+         </children>
+      </AnchorPane>
+      <TextField layoutX="33.0" layoutY="116.0" prefHeight="25.0" prefWidth="330.0" />
+      <ChoiceBox layoutX="386.0" layoutY="116.0" prefHeight="25.0" prefWidth="163.0" />
+      <Label layoutX="33.0" layoutY="93.0" text="Write for search " />
+      <Label layoutX="387.0" layoutY="93.0" text="Choose a criteria for searching" />
+      <ImageView fitHeight="68.0" fitWidth="559.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
