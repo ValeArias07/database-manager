@@ -81,7 +81,7 @@ public class Person {
 	@Override
 	public String toString() {
 		String genderText=(gender==false ? "Female":"Male");
-		return "Name: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n";
+		return "ID: "+ id+ "\nName: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n";
 	}
 	
 }

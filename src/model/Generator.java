@@ -39,6 +39,7 @@ public class Generator {
 	
 	public static String[] names;
 	public static String[] surnames;
+	public static String[] id;
 	
 	//// Data's Adress
 	public static final String MNAMES ="data/datasets/MaleNames.txt";
@@ -62,38 +63,51 @@ public class Generator {
 		this.peopleByCountrie=new int[PERCENTCOUNTRIES.length];
 		storeNames();
 		storeSurnames();
+		storeId();
 		men=0;
 		women=0;
 		amountOfPeople=0;
 	}	
 	
-	public void generate(int amountToGenerate) throws IOException {
-		int nameIndex=0, surnameIndex=0, bornIndex=0;
+	public ArrayList<Person> generate(int amountToGenerate) throws IOException {
+		int nameIndex=0, idPlus=0, bornIndex=0, idIndex=0;
 		LocalDate date;
 		generatePercentAge(amountToGenerate);
 		generatePercentPeopleByCountrie(amountToGenerate);
 		bornDate(amountToGenerate);
 		long time=System.currentTimeMillis();		
-		//ArrayList<Person> peopleGenerated=new ArrayList<Person>();/// Se almacenan aca por si quiere ver como quedan los objetos con el metodo toString.
+		ArrayList<Person> peopleGenerated=new ArrayList<Person>();/// Se almacenan aca por si quiere ver como quedan los objetos con el metodo toString.
 	
 		while(amountOfPeople<amountToGenerate) { ///Ciclo para que se generen el numero de personas
 				
 				///Creacion de fecha.
 				date=getBornDate(bornIndex);
+				
 
 				///Creacion de persona.
-				Person p=new Person("",names[nameIndex]+" "+surnames[nameIndex],gender(),date,height(date),COUNTRIES[getCountry()],"defined");
+				peopleGenerated.add(new Person(id[idIndex]+""+idPlus,names[nameIndex]+surnames[nameIndex],gender(),date,height(date),COUNTRIES[getCountry()],"defined"));
 				
 				//atribbuto para ver si se crean la cantidad de personas correcta.
-				nameIndex=(nameIndex>names.length? 0:+1);
-				surnameIndex=(surnameIndex>surnames.length?0:1);
+				nameIndex=(nameIndex>names.length? 0:nameIndex+1);
+				idIndex=(idIndex>=id.length ? 0:+idIndex+1);
+				idPlus++;
 				bornIndex++;
 				amountOfPeople++;
 		}
-
 		System.out.println(System.currentTimeMillis()-time);
+		return peopleGenerated;
 	}
 
+	public void storeId() throws IOException {
+		id=new String[1000000];
+		InputReader readerID = new InputReader(new FileInputStream(ID));
+		int max=0;
+		while(max<=id.length-1) {
+			id[max]=readerID.nextLine();
+			max++;
+		}
+	}
+	
 	public  void storeSurnames() throws IOException {
 		surnames=new String[100000];
 		InputReader readerS = new InputReader(new FileInputStream(SURNAMES));
@@ -130,23 +144,24 @@ public class Generator {
 		}
 	}
 	
-
 	public int getCountry() {
-		int cnty=(int)(Math.random()*30);
+		int cnty=0;
 		boolean available=false;
-		while(!available) {
-			if(PERCENTPEOPLE[cnty]>=percentByCountrie[cnty]) { /// Esto lo que hace es que si un pais ya tiene su limite lleno, no asigne mas personas a este pais.
+		while(!available && cnty<COUNTRIES.length-1) {
+		
+			if((int)percentByCountries[cnty]>=peopleByCountrie[cnty]) { /// Esto lo que hace es que si un pais ya tiene su limite lleno, no asigne mas personas a este pais.
 				available=true;
-				percentFulled[cnty]=percentFulled[cnty]+1;
-			}else { /// De ya estar lleno el pais, se cambia a otro aleatorio.
-				cnty=(int)(Math.random()*30);
+				peopleByCountrie[cnty]++;
+			}else { 
+				cnty++;
 			}
 		}
 		return cnty;
 	}
 	
 	public LocalDate getBornDate(int index) {
-		int years=ages[index];
+		int mix=(int)Math.random()*40;
+		int years=ages[index]+mix%ages.length;
 		int month=years%12;
 		int day=years%30;
 		month=(month==0? 1:month);
@@ -156,7 +171,7 @@ public class Generator {
 
 	public void bornDate(int population) {
 		this.ages=new int[population];
-		int agesRangeMax[]= {14,24,54,64,120}, agesRangeMin[]= {0,15,24,54,64};
+		int agesRangeMax[]= {14,24,54,64,90}, agesRangeMin[]= {0,15,24,54,64};
 		int maxValue=0, ageMove=0, random, total=0;
 		for (int j = 0; j < agesRangeMax.length ; j++) { //// Llena segun los intervalos de edad
 			
@@ -197,10 +212,13 @@ public class Generator {
 			else if(random<50) 
 				random=30;
 		}else {
-			if(random<90) 
+			if(random<60) 
 				random=MAXHEIGHT-random;
+			else if(random<90) {
+				random=MAXHEIGHT-(100-random);
+			}
 		}
-		return (double)Math.round(random * 100) / 100;
+		return (double)Math.round(random * 100)/100;
 	}
 	
 	public long getTotal() { ///Metodo para comprobar que efectivamente se crearon el numero n de personas.

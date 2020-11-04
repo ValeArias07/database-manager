@@ -17,9 +17,12 @@ public class GeneratorTest {
 	@Test
 	public void generateTest() throws IOException {
 		setUp1();
-	g.generate(1000000);
+	ArrayList<Person> p=g.generate(100);
 	//g.getPercentage();
 	System.out.println(g.getTotal());
+	for (int i = 0; i < p.size(); i++) {
+		System.out.println(p.get(i));
+	}
 	
 	}
 }
