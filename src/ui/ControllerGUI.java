@@ -33,6 +33,7 @@ public class ControllerGUI {
     
     @FXML
     void LoadData(ActionEvent event) throws IOException {
+    	//LOAD SERIALIZATION
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_FXML));
 		fxmlLoader.setController(menuPage);
 		Parent parent = fxmlLoader.load();

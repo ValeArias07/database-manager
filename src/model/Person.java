@@ -2,6 +2,10 @@ package model;
 import java.time.LocalDate;
 
 public class Person {
+
+	public static final String GENDER_M = "Male";
+	public static final String GENDER_F = "Female";
+	
 	private String id;	///Generator&text.
 	private String name; ///Text.
 	private boolean gender; ///Generator.
