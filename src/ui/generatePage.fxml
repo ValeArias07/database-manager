@@ -7,20 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutX="43.0" layoutY="91.0" onAction="#nmbCreate" prefHeight="25.0" prefWidth="255.0" />
-      <Label layoutX="45.0" layoutY="58.0" text="Write the number of person you want to create" />
-      <Button layoutX="315.0" layoutY="91.0" mnemonicParsing="false" onAction="#generateClick" prefHeight="25.0" prefWidth="164.0" text="Generate" />
-      <Label alignment="CENTER" layoutX="202.0" layoutY="34.0" text="Generate your data:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <ProgressBar fx:id="progressBar" layoutX="42.0" layoutY="132.0" prefHeight="18.0" prefWidth="439.0" progress="0.0" />
-      <Label layoutX="45.0" layoutY="161.0" text="Time: " />
-      <Button fx:id="acceptW" layoutX="194.0" layoutY="190.0" mnemonicParsing="false" onAction="#acceptWelcomeClick" prefHeight="25.0" prefWidth="144.0" text="Accept" />
-      <Label layoutX="86.0" layoutY="162.0" prefHeight="17.0" prefWidth="98.0" text="                      " />
+      <AnchorPane layoutX="38.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="524.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10 10 10 10;">
+         <children>
+            <TextField fx:id="amount" layoutX="43.0" layoutY="91.0" prefHeight="25.0" prefWidth="255.0" />
+            <Label layoutX="45.0" layoutY="58.0" text="Write the number of person you want to create" />
+            <Button layoutX="315.0" layoutY="91.0" mnemonicParsing="false" onAction="#generate" prefHeight="25.0" prefWidth="164.0" text="Generate" />
+            <Label alignment="CENTER" layoutX="202.0" layoutY="34.0" text="Generate your data:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="progressBar" layoutX="42.0" layoutY="132.0" prefHeight="18.0" prefWidth="439.0" progress="0.0" />
+            <Label layoutX="45.0" layoutY="161.0" text="Time: " />
+            <Label fx:id="timeLabel" layoutX="86.0" layoutY="162.0" prefHeight="17.0" prefWidth="98.0" text="                      " />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

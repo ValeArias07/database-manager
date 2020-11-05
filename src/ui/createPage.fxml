@@ -10,53 +10,59 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="88.0" fitWidth="554.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../docs/create.png" />
-         </image></ImageView>
-      <Label layoutX="88.0" layoutY="136.0" prefHeight="17.0" prefWidth="181.0" text="Please, complete all the labels:" />
-      <VBox layoutX="38.0" layoutY="161.0" prefHeight="217.0" prefWidth="272.0" style="-fx-border-color: #000000;">
+      <Label layoutX="88.0" layoutY="136.0" prefHeight="17.0" prefWidth="181.0" text="Please, complete all the labels:" textFill="WHITE" />
+      <VBox layoutX="38.0" layoutY="161.0" prefHeight="217.0" prefWidth="272.0" style="-fx-background-radius: 10 10 10 10; -fx-background-color: #ffffff;">
          <children>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="200.0">
                <children>
                   <Label text="Name:   " />
-                  <TextField prefHeight="25.0" prefWidth="170.0" />
+                  <TextField fx:id="name" prefHeight="25.0" prefWidth="170.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="77.0" text="Gender:          " />
-                  <ChoiceBox prefHeight="25.0" prefWidth="134.0" />
+                  <ChoiceBox fx:id="genderChoiceBox" prefHeight="25.0" prefWidth="134.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="200.0">
                <children>
                   <Label text="Date of Birth:  " />
-                  <DatePicker prefHeight="25.0" prefWidth="136.0" />
+                  <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="136.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="200.0">
                <children>
-                  <Label text="Heigh:             " />
-                  <TextField prefHeight="25.0" prefWidth="138.0" />
+                  <Label text="Height:          " />
+                  <TextField fx:id="height" prefHeight="25.0" prefWidth="136.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="44.0" prefWidth="200.0">
                <children>
                   <Label text="Nationality:     " />
-                  <ChoiceBox prefHeight="25.0" prefWidth="137.0" />
+                  <ChoiceBox fx:id="nationalityChoiceBox" prefHeight="25.0" prefWidth="137.0" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <WebView layoutX="375.0" layoutY="159.0" prefHeight="151.0" prefWidth="170.0" />
-      <Button layoutX="383.0" layoutY="344.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Accept" />
-      <Label layoutX="444.0" layoutY="310.0" text="Image" />
+      <WebView fx:id="webView" layoutX="375.0" layoutY="159.0" prefHeight="151.0" prefWidth="170.0" />
+      <Button layoutX="383.0" layoutY="344.0" mnemonicParsing="false" onAction="#accept" prefHeight="25.0" prefWidth="154.0" text="Accept" />
+      <Label layoutX="444.0" layoutY="310.0" text="Image" textFill="WHITE" />
       <Accordion />
+      <Pane layoutX="24.0" layoutY="21.0" prefHeight="115.0" prefWidth="553.0" style="-fx-background-radius: 10 10 10 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="87.0" fitWidth="553.0" layoutX="3.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/create.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="442.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="principalPane" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save..." />
+              <MenuItem mnemonicParsing="false" onAction="#save" text="Save..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Actions">
             <items>
-              <MenuItem mnemonicParsing="false" text="Create " />
-                  <MenuItem mnemonicParsing="false" text="Search" />
-                  <MenuItem mnemonicParsing="false" text="Update" />
+                  <CheckMenuItem fx:id="create" mnemonicParsing="false" onAction="#goCreate" selected="true" text="Create" />
+                  <CheckMenuItem fx:id="search" mnemonicParsing="false" onAction="#goSearch" text="Search" />
+                  <CheckMenuItem fx:id="update" mnemonicParsing="false" onAction="#goUpdate" text="Update" />
             </items>
           </Menu>
         </menus>
