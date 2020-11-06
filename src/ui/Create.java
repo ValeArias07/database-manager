@@ -1,8 +1,6 @@
 package ui;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +34,7 @@ public class Create {
 
     @FXML
     void initialize() {
-    	webView.getEngine().load("https://thispersondoesnotexist.com");
+    	refreshImage();
     	initializeChoiceBox();
     	datePicker.setValue(LocalDate.now());
     }
@@ -46,6 +44,10 @@ public class Create {
     	genderChoiceBox.setValue(Person.GENDER_M);
     	nationalityChoiceBox.setItems(FXCollections.observableArrayList(Generator.COUNTRIES));
     	nationalityChoiceBox.setValue(Generator.COUNTRIES[0]);
+    }
+    
+    private void refreshImage() {
+    	webView.getEngine().load("https://thispersondoesnotexist.com");
     }
     
     @FXML
@@ -63,6 +65,9 @@ public class Create {
     		String nationality = nationalityChoiceBox.getValue();
     		try {
     			double h = Double.parseDouble(height.getText());
+    			ControllerGUI.data.add(n, (g.equals(Person.GENDER_M)?true:false), date, h, nationality);
+    			ControllerGUI.loadAlert(AlertType.INFORMATION, "SUSSESFUL", "The person has been added correctly", "continue adding");
+    			refreshImage();
     		}catch (NumberFormatException e){
     			ControllerGUI.loadAlert(AlertType.ERROR,"HEIGHT ERROR", "You must type a number in the height field", "Please fix and try again.");
     		}

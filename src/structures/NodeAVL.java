@@ -1,6 +1,9 @@
 package structures;
 
-public class NodeAVL <K extends Comparable<K>,V> extends Node<K,V> implements NodeInterface<K,V>{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class NodeAVL <K extends Comparable<K>,V> extends Node<K,V> implements NodeInterface<K,V>, Serializable{
 	
 	private int height;
 

@@ -1,12 +1,13 @@
-package ui;
+package model;
 
 import threads.ControllerThread;
+
+import java.io.Serializable;
 import java.time.LocalDate;
-import model.Generator;
-import model.Person;
 import structures.AVL;
 
-public class DataBase {
+@SuppressWarnings("serial")
+public class DataBase implements Serializable{
 
 	private AVL<String, Person> t1;
 	private AVL<String, Person> t2;
@@ -83,7 +84,7 @@ public class DataBase {
 		controller.start();
 		Person p=null;
 		while(controller.isAlive()) {
-			p=controller.getPersonFound();
+			
 		}
 		return p;
 	}
@@ -103,5 +104,4 @@ public class DataBase {
 	public AVL<String, Person> getT4() {
 		return t4;
 	}
-	
 }

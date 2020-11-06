@@ -1,7 +1,9 @@
 package structures;
 
+import java.io.Serializable;
 
-public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> implements BinarySearchTreeI<K,V>{
+@SuppressWarnings("serial")
+public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> implements BinarySearchTreeI<K,V>, Serializable{
 
 	public AVL() {
 		super();

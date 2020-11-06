@@ -15,7 +15,7 @@ public class Main extends Application{
 	private ControllerGUI gui;
 	
 	public Main() throws IOException {
-		gui = new ControllerGUI(new Controller());
+		gui = new ControllerGUI();
 	}
 	
 	public static void main(String[] args) {

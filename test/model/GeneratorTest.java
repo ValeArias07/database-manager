@@ -1,9 +1,8 @@
 package model;
 import java.io.IOException;
 import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
-import ui.DataBase;
+import model.DataBase;
 
 public class GeneratorTest {
 	private DataBase data;
@@ -15,9 +14,10 @@ public class GeneratorTest {
 	void setUp2() throws IOException{
 		String amount="10000000";
 		data= new DataBase();
-		data.create(amount);
+		//data.create(amount);
 	}
-	
+	/**
+	 * 	
 	@Test
 	public void generateTest() throws IOException, InterruptedException {
 		setUp1();
@@ -26,6 +26,8 @@ public class GeneratorTest {
 		data.create(amount);
 		System.out.println(System.currentTimeMillis()-time);
 	}
+	 * 
+	 */
 	
 	@Test
 	public void add() throws IOException {
@@ -47,7 +49,5 @@ public class GeneratorTest {
 		System.out.println(data.getT3().getSize());
 		System.out.println(data.getT4().getSize());
 	}
-	
-	
 }
 

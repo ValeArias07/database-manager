@@ -1,6 +1,9 @@
 package ui;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import model.DataBase;
 
 public class ControllerGUI {
 
+	public static final String SERIAL_ROUTE= "SerialData/data.save";
 	public static final String MENU_FXML = "menuPage.fxml";
 	public static final String GENERATE_FXML = "generatePage.fxml";
 	
@@ -21,19 +26,19 @@ public class ControllerGUI {
     @FXML
     private AnchorPane buttonAnchor;
 
-    public static Controller controller;
+    public static DataBase data;
     private Generate generatePage;
     private Menu menuPage;
     
-    public ControllerGUI(Controller c) {
-    	controller = c;
+    public ControllerGUI() {
+    	data = new DataBase();
     	generatePage = new Generate();
     	menuPage = new Menu(new Create(), new Search(), new UpdateAndDelete());
     }
     
     @FXML
-    void LoadData(ActionEvent event) throws IOException {
-    	//LOAD SERIALIZATION
+    void LoadData(ActionEvent event) throws IOException, ClassNotFoundException {
+    	load();
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_FXML));
 		fxmlLoader.setController(menuPage);
 		Parent parent = fxmlLoader.load();
@@ -54,5 +59,24 @@ public class ControllerGUI {
 		alert.setHeaderText(middle);
 		alert.setTitle(title);
 		alert.show();
+	}
+    
+	@SuppressWarnings("resource")
+	private void load() throws ClassNotFoundException {
+
+		File file = new File(SERIAL_ROUTE);
+
+		if(file.exists()) {
+			try {
+				FileInputStream fi = new FileInputStream(SERIAL_ROUTE);
+				ObjectInputStream oi;
+				oi = new ObjectInputStream(fi);
+				data = (DataBase)oi.readObject();
+
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
 	}
 }
