@@ -1,4 +1,4 @@
-package Threads;
+package threads;
 
 import java.io.IOException;
 
