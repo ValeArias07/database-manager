@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebView;
+import model.Person;
 
 public class Search {
 
@@ -40,24 +41,26 @@ public class Search {
 
     @FXML
     void search(ActionEvent event) {
-    	if(searchParam.getText().equals(""))
+    	if(searchParam.getText().equals("")) 
     		ControllerGUI.loadAlert(AlertType.ERROR,"PARAM EMPTY", "You must type the param", "Please type the param and try again.");
     	else {
-    		if(criterionChoiceBox.getValue().equals(C_ID)) {
-    			try {
-        			int idSearch = Integer.parseInt(searchParam.getText());
-        			search();//
-        		}catch (NumberFormatException e){
-        			ControllerGUI.loadAlert(AlertType.ERROR,"PARAM ERROR", "You must type a number in the param with id criterion", "Please fix and try again.");
-        		}
-        	}else {
-        		search();//
-        	}
+    		String idSearch = searchParam.getText();
+			search(idSearch);
     	}
     }
     
-    private void search() {
-       	webView.getEngine().load("https://thispersondoesnotexist.com");
+    private void search(String id) {
+    	Person p = ControllerGUI.data.search(id);
+    	if(p!=null) {
+    		nameShown.setText(p.getName());
+    		genderShown.setText((p.getGender())?"MAN":"WOMAN");
+    		dateShown.setText(p.getBornDate().toString());
+    		heightShown.setText(p.getHeight()+"");
+    		nationalityShown.setText(p.getNationality());
+    		webView.getEngine().load("https://thispersondoesnotexist.com");
+    	}else {
+    		ControllerGUI.loadAlert(AlertType.INFORMATION, "NOT FOUND", "THE PERSON DOES NOT EXIST", "try with other person");
+    	}
     }
     
     @FXML

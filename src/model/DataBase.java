@@ -65,9 +65,8 @@ public class DataBase implements Serializable{
 		controller.start();
 		Person p=null;
 		while(controller.isAlive()) {
-			
+			p=controller.getPersonFound();
 		}
-		p=controller.getPersonFound();
 		
 		return p;
 	}

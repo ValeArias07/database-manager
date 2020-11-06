@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class Menu {
@@ -81,7 +82,6 @@ public class Menu {
     }
     
     private void save() {
-
 		File file = new File(ControllerGUI.SERIAL_ROUTE);
 
 		if(!file.exists()) {
@@ -97,6 +97,7 @@ public class Menu {
 			ObjectOutputStream oo = new ObjectOutputStream(fo);
 			oo.writeObject(ControllerGUI.data);
 			oo.close();
+			ControllerGUI.loadAlert(AlertType.INFORMATION, "SUSSESFUL", "The data has been saved", ":)");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
