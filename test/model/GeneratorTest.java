@@ -1,28 +1,24 @@
 package model;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
+import ui.DataBase;
 
 public class GeneratorTest {
-	private Generator g;
-	
+	private DataBase data;
+
 	void setUp1() throws IOException{
-		g= new Generator();
-	}
-	@Test
-	public void generateTest() throws IOException {
-		setUp1();
-	ArrayList<Person> p=g.generate(100);
-	//g.getPercentage();
-	System.out.println(g.getTotal());
-	for (int i = 0; i < p.size(); i++) {
-		System.out.println(p.get(i));
+		data= new DataBase();
 	}
 	
+	@Test
+	public void generateTest() throws IOException, InterruptedException {
+		setUp1();
+		String amount="10000000";
+		long time=System.currentTimeMillis();
+		data.create(amount);
+		System.out.println(System.currentTimeMillis()-time);
+		data.remove("UJJML4");
+		System.out.println(data.search("UJJML4"));
+		
 	}
 }

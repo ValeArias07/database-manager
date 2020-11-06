@@ -96,8 +96,4 @@ public class Node<K extends Comparable<K>,V> implements NodeInterface<K, V>{
 		numberOfCopies--;
 	}
 	
-	@Override
-	public String toString() {
-		return value + ", KEY: " + key;
-	}
 }

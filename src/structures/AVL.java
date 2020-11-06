@@ -60,6 +60,7 @@ public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> imp
     @Override
 	public void insert(K key, V value) {
     	root = insert((NodeAVL<K,V>)root, key, value);
+    	size++;
     }
     
 	private NodeAVL<K,V> insert(NodeAVL<K,V> n, K key, V value) {
@@ -100,13 +101,14 @@ public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> imp
             n.setRight(rightRotate((NodeAVL<K, V>) n.getRight())); 
             return leftRotate((NodeAVL<K, V>) n); 
         }
-        
+
         return n;
 	}
 
 	@Override
 	public NodeInterface<K,V> delete(K key) {
 		root = delete((NodeAVL<K, V>) root, key);
+		size--;
 		return null;
 	}
 	

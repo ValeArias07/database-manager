@@ -1,27 +1,11 @@
 package model;
-
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-
 /**
  * A very special import to do, without this, our program wasn't fast as
  * it is now. To check more please enter to: https://github.com/williamfiset/FastJavaIO
  */
-import imports.InputReader; 
-
-/**
- * LEER PORFAVOR.
- * ESTE ES MI PRIMER INTENTO DEL PROGRAMA. FALTAN VARIAS CONDICIONES, REVISE COMO ESTA Y ME COMENTA
- */
+import imports.InputReader;
 
 /**
  * Curious Things: (A lo que se supone que quiero llegar.)
@@ -33,135 +17,64 @@ import imports.InputReader;
 public class Generator {
 	///// Data in Arrays. (In order to save memory).
 	public static final String[] COUNTRIES= {"Argentina","Bahamas", "Barbados","Belice","Bolivia","Brasil","Canadá","Chile","Colombia","Costa Rica","Cuba","Dominica","Ecuador","El Salvador","Estados Unidos","Granada","Guatemala","Guyana","Haití","Honduras","Jamaica","México","Nicaragua","Panamá","Paraguay","Perú","República Dominicana","Santa Lucía","Surinam","Trinidad y Tobago","Uruguay","Venezuela"};
-	public static final double PERCENTCOUNTRIES[]= {4.43,0.04,0.03,0.04,1.14,20.84,3.7,1.87,4.99,0.5,1.11,0.01,1.73,32.45,0.64,0.01,1.76,0.08,1.12,0.97,0.29,12.64,0.65,0.42,0.7,3.24,0.28,1.06,0.02,0.06,0.14,0.34,2.79};
-	public static final double PERCENTPEOPLE[]= {18.62 ,13.12 ,39.29 ,12.94 ,16.03};
+	
 	public static final double MAXHEIGHT=200.0;
-	
-	public static String[] names;
-	public static String[] surnames;
-	public static String[] id;
-	
-	//// Data's Adress
-	public static final String MNAMES ="data/datasets/MaleNames.txt";
-	public static final String FNAMES ="data/datasets/FemaleNames.txt";
-	public static final String SURNAMES ="data/datasets/Surnames.txt";
-	public static final String ID="data/datasets/Id.txt";
+	public static final String[] IDS= {"PBVXZ","UJJML","NEUGO","WMXZG","GOZCA"};
+	public String[] names;
 	
 	//// Distribution
 	public int women;
 	public int men;
-	public long amountOfPeople;
+	public int amountOfPeople;
 	
 	public double percentByCountries[];//// Atributo para medir la cantidad de gente generada en un determinado pais.
 	public int peopleByCountrie[];
 	public int percentPeopleForAges[];
-	public int ages[];
 	
-	public Generator() throws IOException {
-		this.percentByCountries= new double[PERCENTCOUNTRIES.length];
-		this.percentPeopleForAges= new int[PERCENTPEOPLE.length];
-		this.peopleByCountrie=new int[PERCENTCOUNTRIES.length];
-		storeNames();
-		storeSurnames();
-		storeId();
+	public Generator(Loader loader) throws IOException {
+		percentByCountries=loader.getPercentByCountries();
+		peopleByCountrie=loader.getPeopleByCountrie();
+		names=loader.getNames();
 		men=0;
 		women=0;
-		amountOfPeople=0;
+		amountOfPeople=loader.getPopulation();
 	}	
 	
-	public ArrayList<Person> generate(int amountToGenerate) throws IOException {
-		int nameIndex=0, idPlus=0, bornIndex=0, idIndex=0;
-		LocalDate date;
-		generatePercentAge(amountToGenerate);
-		generatePercentPeopleByCountrie(amountToGenerate);
-		bornDate(amountToGenerate);
-		long time=System.currentTimeMillis();		
-		ArrayList<Person> peopleGenerated=new ArrayList<Person>();/// Se almacenan aca por si quiere ver como quedan los objetos con el metodo toString.
-	
-		while(amountOfPeople<amountToGenerate) { ///Ciclo para que se generen el numero de personas
-				
-				///Creacion de fecha.
-				date=getBornDate(bornIndex);
-				
+	public Person generate(int index, int array) throws IOException {			 
+		int namesI=0;
+		
+		int plus=index*array;
+		if(plus<names.length) {
+		namesI=plus;
+		}
 
-				///Creacion de persona.
-				peopleGenerated.add(new Person(id[idIndex]+""+idPlus,names[nameIndex]+surnames[nameIndex],gender(),date,height(date),COUNTRIES[getCountry()],"defined"));
-				
-				//atribbuto para ver si se crean la cantidad de personas correcta.
-				nameIndex=(nameIndex>names.length? 0:nameIndex+1);
-				idIndex=(idIndex>=id.length ? 0:+idIndex+1);
-				idPlus++;
-				bornIndex++;
-				amountOfPeople++;
+		///Creacion de fecha.
+		 	LocalDate date=getBornDate(index);
+		///Creacion de persona.
+		 	return new Person(IDS[array]+(index%IDS.length)*array,names[namesI],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
+			//return new Person(IDS[plus%IDS.length]+plus,names[namesI],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
 		}
-		System.out.println(System.currentTimeMillis()-time);
-		return peopleGenerated;
-	}
-
-	public void storeId() throws IOException {
-		id=new String[1000000];
-		InputReader readerID = new InputReader(new FileInputStream(ID));
-		int max=0;
-		while(max<=id.length-1) {
-			id[max]=readerID.nextLine();
-			max++;
-		}
-	}
 	
-	public  void storeSurnames() throws IOException {
-		surnames=new String[100000];
-		InputReader readerS = new InputReader(new FileInputStream(SURNAMES));
-		int max=0;
-		while(max<=names.length-1) {
-			surnames[max]=readerS.nextLine();
-			max++;
-		}
-	}
-	public void storeNames() throws IOException {
-		names=new String[100000];
-		InputReader readerF = new InputReader(new FileInputStream(FNAMES));
-		InputReader readerM = new InputReader(new FileInputStream(MNAMES));
-		int max=0;
-		while(max<=names.length-1) {
-			if(max%2==0) {
-				names[max]=readerM.nextLine();
-			}else{
-				names[max]=readerF.nextLine();
-			}
-			max++;
-		}
-	}
 	
-	public void generatePercentAge(long population) {
-		for (int i = 0; i < PERCENTPEOPLE.length; i++) {
-			percentPeopleForAges[i]=(int)(PERCENTPEOPLE[i]*population)/100;
-		}
-	}
 	
-	public void generatePercentPeopleByCountrie(long population) {
-		for (int i = 0; i < PERCENTCOUNTRIES.length; i++) {
-			percentByCountries[i]=(int)(PERCENTCOUNTRIES[i]*population)/100;
-		}
-	}
-	
-	public int getCountry() {
-		int cnty=0;
+	public int getCountry(int num) {
+		int cnty=(num%(COUNTRIES.length)/2);
 		boolean available=false;
+		
 		while(!available && cnty<COUNTRIES.length-1) {
 		
 			if((int)percentByCountries[cnty]>=peopleByCountrie[cnty]) { /// Esto lo que hace es que si un pais ya tiene su limite lleno, no asigne mas personas a este pais.
 				available=true;
 				peopleByCountrie[cnty]++;
 			}else { 
-				cnty++;
+					cnty++;	
 			}
 		}
 		return cnty;
 	}
 	
 	public LocalDate getBornDate(int index) {
-		int mix=(int)Math.random()*40;
-		int years=ages[index]+mix%ages.length;
+		int years=2020-index%90;
 		int month=years%12;
 		int day=years%30;
 		month=(month==0? 1:month);
@@ -169,25 +82,6 @@ public class Generator {
 		return LocalDate.of(years, month, day);
 	}
 
-	public void bornDate(int population) {
-		this.ages=new int[population];
-		int agesRangeMax[]= {14,24,54,64,90}, agesRangeMin[]= {0,15,24,54,64};
-		int maxValue=0, ageMove=0, random, total=0;
-		for (int j = 0; j < agesRangeMax.length ; j++) { //// Llena segun los intervalos de edad
-			
-			while(maxValue<=percentPeopleForAges[j] && total<population) { /// Llena hasta el porcentaje de cada categoria
-				random=(int)(Math.random()*agesRangeMax[ageMove]); ///Numero Aleatorio entre 0 al maximo
-				if(random!=0 && random>agesRangeMin[ageMove]) { /// Limitacion del numero desde el min hasta el max
-					ages[total]=2020-random; ////Asignacion de la fecha al array
-					maxValue++; /// Para ir llenando el contador de las personas
-					total++; /// Para ir llenando el array de fechas 
-				}
-			}
-		ageMove++;
-		maxValue=0;	
-		}	
-	}
-	
 	public boolean gender() {
 		//// Como se supone que debe haber una distribucion igual de mujeres y hombres, se creo este condicional.
 		if(women>men) {
@@ -221,13 +115,8 @@ public class Generator {
 		return (double)Math.round(random * 100)/100;
 	}
 	
-	public long getTotal() { ///Metodo para comprobar que efectivamente se crearon el numero n de personas.
+	public long getPopulation() {
 		return amountOfPeople;
 	}
 	
-	public void getPercentage() {
-		for (int i = 0; i < ages.length; i++) {
-			System.out.println(ages[i]);
-		}
-	}
 }
