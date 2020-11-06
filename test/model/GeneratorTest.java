@@ -29,7 +29,7 @@ public class GeneratorTest {
 	
 	@Test
 	public void add() throws IOException {
-		setUp2();
+		DataBase data= new DataBase();
 		data.add("Sofia", false, LocalDate.of(2001, 3, 26), 1.45 , "Argentina");
 		data.add("Alejandro", true, LocalDate.of(2002, 12, 28), 1.32 , "Costa Rica");
 		data.add("Valentina", false, LocalDate.of(2001, 4, 18), 1.53 , "Colombia");
