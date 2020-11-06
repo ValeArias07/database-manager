@@ -1,9 +1,8 @@
 package model;
 import java.io.IOException;
 import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
-import ui.DataBase;
+import model.DataBase;
 
 public class GeneratorTest {
 	private DataBase data;

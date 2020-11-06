@@ -1,6 +1,9 @@
 package ui;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,7 +42,7 @@ public class Menu {
     
     @FXML
     public void initialize() throws IOException {
-    	load(CREATE_FXML, createController); 
+    	loadFxml(CREATE_FXML, createController); 
     }
     
     @FXML
@@ -47,7 +50,7 @@ public class Menu {
     	if(create.isSelected()) {
     		search.setSelected(false);
         	update.setSelected(false);
-        	load(CREATE_FXML, createController); 
+        	loadFxml(CREATE_FXML, createController); 
     	}else
     		create.setSelected(true);
     }
@@ -57,7 +60,7 @@ public class Menu {
     	if(search.isSelected()) {
     		create.setSelected(false);
         	update.setSelected(false);
-        	load(SEARCH_FXML, searchController);
+        	loadFxml(SEARCH_FXML, searchController);
     	}else
     		search.setSelected(true);
     }
@@ -67,17 +70,39 @@ public class Menu {
     	if(update.isSelected()) {
     		search.setSelected(false);
         	create.setSelected(false);
-        	load(UPDATE_DELETE_FXML, upAndDelController);
+        	loadFxml(UPDATE_DELETE_FXML, upAndDelController);
     	}else
     		update.setSelected(true);
     }
 
     @FXML
     void save(ActionEvent event) {
-
+    	save();
     }
     
-    public void load(String n, Object c) throws IOException {
+    private void save() {
+
+		File file = new File(ControllerGUI.SERIAL_ROUTE);
+
+		if(!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		try {
+			FileOutputStream fo = new FileOutputStream(file);
+			ObjectOutputStream oo = new ObjectOutputStream(fo);
+			oo.writeObject(ControllerGUI.data);
+			oo.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+    
+    public void loadFxml(String n, Object c) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(n));
 		fxmlLoader.setController(c);
 		Parent parent = fxmlLoader.load();

@@ -1,11 +1,10 @@
 package threads;
 
 import java.io.IOException;
-
 import model.Generator;
 import model.Loader;
 import model.Person;
-import ui.DataBase;
+import model.DataBase;
 public class ControllerThread extends Thread {
 
 	private DataBase data;
