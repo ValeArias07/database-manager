@@ -12,10 +12,8 @@ public class Person {
 	private LocalDate bornDate; ///Generator.
 	private double height; ///Generator. Conditional with the age
 	private String nationality; ///Array.
-	private String picture;
 	
-	public Person(String id, String name, boolean gender, LocalDate bornDate, double height, String nationality,
-			String picture) {
+	public Person(String id, String name, boolean gender, LocalDate bornDate, double height, String nationality) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,7 +21,6 @@ public class Person {
 		this.bornDate = bornDate;
 		this.height = height;
 		this.nationality = nationality;
-		this.picture = picture;
 	}
 
 	public String getId() {
@@ -74,18 +71,10 @@ public class Person {
 		this.nationality = nationality;
 	}
 
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	
 	@Override
 	public String toString() {
 		String genderText=(gender==false ? "Female":"Male");
-		return "ID: "+ id+ "\nName: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n";
+		return "ID: "+ id+ "\nName: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n_________________";
 	}
 	
 }

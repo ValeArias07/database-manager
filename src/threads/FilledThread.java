@@ -1,9 +1,8 @@
-package Threads;
+package threads;
 import java.io.IOException;
 import model.Generator;
 import model.Person;
 import structures.AVL;
-import structures.BinarySearchTreeI;
 
 public class FilledThread extends Thread{
 	private Generator random;
@@ -21,7 +20,6 @@ public class FilledThread extends Thread{
 
 	@Override
 	public void run() {	
-		long time=System.currentTimeMillis();
 		int max=0;
 		while(max<cant/4) {
 			try {
@@ -32,6 +30,5 @@ public class FilledThread extends Thread{
 				e.printStackTrace();
 			}
 		}
-		System.out.println(System.currentTimeMillis()-time);
 	}
 }

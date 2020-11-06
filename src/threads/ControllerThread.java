@@ -40,32 +40,30 @@ public class ControllerThread extends Thread {
 	}
 	
 	public void search() throws InterruptedException {
-		SearchThread s1= new SearchThread(data,data.getT1(),aux);
-		SearchThread s2= new SearchThread(data,data.getT2(),aux);
-		SearchThread s3= new SearchThread(data,data.getT3(),aux);
-		SearchThread s4= new SearchThread(data,data.getT4(),aux);
+		SearchThread s1= new SearchThread(data.getT1(),aux);
+		SearchThread s2= new SearchThread(data.getT2(),aux);
+		SearchThread s3= new SearchThread(data.getT3(),aux);
+		SearchThread s4= new SearchThread(data.getT4(),aux);
 		s1.start();
 		s2.start();
 		s3.start();
 		s4.start();
-
-		while(s1.isAlive() || s2.isAlive() || s3.isAlive() || s4.isAlive())
+		
+		boolean found=false;
+		while(s1.isAlive() || s2.isAlive() || s3.isAlive() || s4.isAlive() && !found)
 		if(s1.getPersonFound()!=null) {
 			personFound=s1.getPersonFound();
+			found=true;
 		}else if(s2.getPersonFound()!=null) {
 			personFound=s2.getPersonFound();
+			found=true;
 		}else if(s3.getPersonFound()!=null) {
 			personFound=s3.getPersonFound();
+			found=true;
 		}else if(s4.getPersonFound()!=null) {
 			personFound=s4.getPersonFound();
+			found=true;
 		}
-		
-		/**
-		 * s1.join();
-		s2.join();
-		s3.join();
-		s4.join();
-		 */
 	}
 
 	public void create() throws IOException {
@@ -96,25 +94,14 @@ public class ControllerThread extends Thread {
 	}
 	
 	public void remove() throws InterruptedException {
-		RemoveThread r1= new RemoveThread(data,data.getT1(),aux);
-		RemoveThread r2= new RemoveThread(data,data.getT2(),aux);
-		RemoveThread r3= new RemoveThread(data,data.getT3(),aux);
-		RemoveThread r4= new RemoveThread(data,data.getT4(),aux);
+		RemoveThread r1= new RemoveThread(data.getT1(),aux);
+		RemoveThread r2= new RemoveThread(data.getT2(),aux);
+		RemoveThread r3= new RemoveThread(data.getT3(),aux);
+		RemoveThread r4= new RemoveThread(data.getT4(),aux);
 		r1.start();
 		r2.start();
 		r3.start();
 		r4.start();
-		
-		while(r1.isAlive() || r2.isAlive() || r3.isAlive() || r4.isAlive())
-			if(r1.getPersonFound()!=null) {
-				personFound=r1.getPersonFound();
-			}else if(r2.getPersonFound()!=null) {
-				personFound=r2.getPersonFound();
-			}else if(r3.getPersonFound()!=null) {
-				personFound=r3.getPersonFound();
-			}else if(r4.getPersonFound()!=null) {
-				personFound=r4.getPersonFound();
-			}
 		
 		r1.join();
 		r2.join();
