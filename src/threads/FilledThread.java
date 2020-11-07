@@ -1,5 +1,6 @@
 package threads;
 import java.io.IOException;
+
 import model.Generator;
 import model.Person;
 import structures.AVL;
@@ -21,7 +22,7 @@ public class FilledThread extends Thread{
 	@Override
 	public void run() {	
 		int max=0;
-		while(max<cant/4) {
+		while(max<=cant/4) {
 			try {
 				Person p=random.generate(max, n);
 				tree.insert(p.getId(), p);

@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import model.DataBase;
+import model.ProgressBarController;
 
 public class ControllerGUI {
 
@@ -29,11 +30,13 @@ public class ControllerGUI {
     public static DataBase data;
     private Generate generatePage;
     private Menu menuPage;
+    private ProgressBarController pb;
     
     public ControllerGUI() {
-    	data = new DataBase();
-    	generatePage = new Generate(this);
+    	pb =  new ProgressBarController();
+    	generatePage = new Generate(this, pb);
     	menuPage = new Menu(new Create(), new Search(), new UpdateAndDelete());
+    	data = new DataBase();
     }
     
     @FXML

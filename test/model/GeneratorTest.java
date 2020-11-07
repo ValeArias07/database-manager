@@ -8,7 +8,7 @@ public class GeneratorTest {
 	private DataBase data;
 
 	void setUp1() throws IOException{
-		data= new DataBase();
+		//data= new DataBase();
 	}
 	
 	/**
@@ -26,12 +26,12 @@ public class GeneratorTest {
 		setUp1();
 		int amount=10000000;
 		long time=System.currentTimeMillis();
-		data.create(amount);
+		//data.create(amount);
 		System.out.println(System.currentTimeMillis()-time);
 	}
 
 	public void add() throws IOException {
-		DataBase data= new DataBase();
+		//DataBase data= new DataBase();
 		data.add("Sofia", false, LocalDate.of(2001, 3, 26), 1.45 , "Argentina");
 		data.add("Alejandro", true, LocalDate.of(2002, 12, 28), 1.32 , "Costa Rica");
 		data.add("Valentina", false, LocalDate.of(2001, 4, 18), 1.53 , "Colombia");

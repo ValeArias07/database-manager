@@ -4,6 +4,8 @@ import java.io.IOException;
 import model.Generator;
 import model.Loader;
 import model.Person;
+import model.ProgressBarController;
+import ui.Generate;
 import model.DataBase;
 public class ControllerThread extends Thread {
 
@@ -16,12 +18,23 @@ public class ControllerThread extends Thread {
 	private Person personFound;
 	private String aux;
 	private boolean finish;
+	private Generate gui;
+	private ProgressBarController pb;
 	
 	public ControllerThread(DataBase data, String option, String aux) {
 		this.data=data;
 		this.option=option;
 		this.aux=aux;
 		this.finish=false;
+	}
+	
+	public ControllerThread(DataBase data, String option, String aux, Generate gui, ProgressBarController pb) {
+		this.data=data;
+		this.option=option;
+		this.aux=aux;
+		this.finish=false;
+		this.gui = gui;
+		this.pb = pb;
 	}
 	
 	@Override
@@ -84,7 +97,7 @@ public class ControllerThread extends Thread {
 		FilledThread thread1= new FilledThread(cant,g1,data.getT1(),1);
 		FilledThread thread2=new FilledThread(cant,g2,data.getT2(),2);
 		FilledThread thread3= new FilledThread(cant,g3,data.getT3(),3);
-		FilledThread thread4= new FilledThread(cant,g4,data.getT4(),4);
+		FilledThreadGUI thread4= new FilledThreadGUI(cant,g4,data.getT4(),4, gui, pb);
 		thread1.start();
 		thread2.start();
 		thread3.start();

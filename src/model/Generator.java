@@ -47,8 +47,8 @@ public class Generator {
 		}
 
 		LocalDate date=getBornDate(index);
-		return new Person(IDS[array]+(index%IDS.length)*array,names[nameIndex]+" "+surnames[surnameIndex],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
-		}
+		return new Person(IDS[array]+(index),names[nameIndex]+" "+surnames[surnameIndex],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
+	}
 
 	public int getCountry(int num) {
 		int cnty=(num%(COUNTRIES.length)/2);

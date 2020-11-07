@@ -1,7 +1,6 @@
 package model;
 
 import threads.ControllerThread;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import structures.AVL;
@@ -59,12 +58,7 @@ public class DataBase implements Serializable{
 				actualTree=1;	
 		return r;
 	}
-	
-	public void create(int amount) {
-		ControllerThread controller= new ControllerThread(this, ControllerThread.CREATE_OPTION, amount+"");
-		controller.start();
-	}
-	
+
 	public Person search(String id) {
 		ControllerThread controller= new ControllerThread(this, ControllerThread.SEARCH_OPTION, id);
 		controller.start();
