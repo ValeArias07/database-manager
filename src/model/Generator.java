@@ -16,25 +16,38 @@ public class Generator {
 
 	//// Data Loaded
 	public String[] names;
+	public String[] surnames;
 	public double percentByCountries[];
 	public int peopleByCountrie[];
 	public int percentPeopleForAges[];
+	private int nameIndex;
+	private int surnameIndex;
 	
 	public Generator(Loader loader) throws IOException {
 		percentByCountries=loader.getPercentByCountries();
 		peopleByCountrie=loader.getPeopleByCountrie();
 		names=loader.getNames();
+		surnames=loader.getSurnames();
 		men=0;
 		women=0;
+		nameIndex=0;
+		surnameIndex=0;
 		amountOfPeople=loader.getPopulation();
 	}	
 	
+	
 	public Person generate(int index, int array) throws IOException {			 
 		int plus=index*array;
-		int namesI=(plus<names.length ? plus:0);
-		
+
+		if(surnameIndex<surnames.length) {
+			surnameIndex++;
+		}else {
+			surnameIndex=0;
+			nameIndex++;
+		}
+
 		LocalDate date=getBornDate(index);
-		return new Person(IDS[array]+(index%IDS.length)*array,names[namesI],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
+		return new Person(IDS[array]+(index%IDS.length)*array,names[nameIndex]+" "+surnames[surnameIndex],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
 		}
 
 	public int getCountry(int num) {

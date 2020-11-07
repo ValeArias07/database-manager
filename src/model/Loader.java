@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Loader {
 	
 	public static String[] names;
+	public static String[] surnames;
 	public double percentByCountries[];
 	public int peopleByCountrie[];
 	public int population;
@@ -23,15 +24,23 @@ public class Loader {
 		this.peopleByCountrie=new int[PERCENTCOUNTRIES.length];
 		generatePercentPeopleByCountrie(amountToGenerate);
 		storeNames();
+		storeSurnames();
 		population=amountToGenerate;
 	}
 
 	public void storeNames() throws IOException{
-		names=new String[100000];
+		names=new String[6700];
 		InputReader readerF = new InputReader(new FileInputStream(NAMES));
-		InputReader readerS = new InputReader(new FileInputStream(SURNAMES));
 		for (int i = 0; i < names.length; i++) {
-			names[i]=readerF.nextLine()+" "+readerS.nextLine();
+			names[i]=readerF.nextLine();
+		}
+	}
+	
+	public void storeSurnames() throws IOException{
+		surnames=new String[160000];
+		InputReader readerS = new InputReader(new FileInputStream(SURNAMES));
+		for (int i = 0; i < surnames.length; i++) {
+			surnames[i]=readerS.nextLine();
 		}
 	}
 	
@@ -43,6 +52,10 @@ public class Loader {
 	
 	public String[] getNames() {
 		return names;
+	}
+	
+	public String[] getSurnames() {
+		return surnames;
 	}
 	
 	public double[] getPercentByCountries() {
