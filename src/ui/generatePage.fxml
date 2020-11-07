@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="38.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="524.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10 10 10 10;">
+      <AnchorPane layoutX="39.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="524.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10 10 10 10;">
          <children>
             <TextField fx:id="amount" layoutX="43.0" layoutY="91.0" prefHeight="25.0" prefWidth="255.0" />
             <Label layoutX="45.0" layoutY="58.0" text="Write the number of person you want to create" />

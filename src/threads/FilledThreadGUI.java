@@ -12,28 +12,26 @@ public class FilledThreadGUI extends Thread{
 	private Generator random;
 
 	private AVL<String, Person> tree;
-	private int n;
 	private int cant;
 	private Generate gui;
 	private ProgressBarController pb;
 	
-	public FilledThreadGUI(int cant,Generator random, AVL<String, Person> t1, int n, Generate gui, ProgressBarController pb) {
+	public FilledThreadGUI(int cant,Generator random, AVL<String, Person> t1, Generate gui, ProgressBarController pb) {
 		this.random=random;
 		this.tree=t1;
-		this.n=n;
 		this.cant=cant;
 		this.gui = gui;
 		this.pb = pb;
 	}
 
 	@Override
-	public void run() {	
+	public void run() {
 		int max=0;
 		int cont=0;
 		long init = System.currentTimeMillis();
 		while(max<=cant/4) {
 			try {
-				Person p=random.generate(max, n);
+				Person p=random.generate();
 				tree.insert(p.getId(), p);
 				cont++;
 				max++;
@@ -41,7 +39,7 @@ public class FilledThreadGUI extends Thread{
 					cont = 0;
 					updateProgressBar();
 				}
-			} catch (IOException e) {
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 		}

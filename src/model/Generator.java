@@ -22,8 +22,10 @@ public class Generator {
 	public int percentPeopleForAges[];
 	private int nameIndex;
 	private int surnameIndex;
+	private int index;
+	private int array;
 	
-	public Generator(Loader loader) throws IOException {
+	public Generator(Loader loader, int array) throws IOException {
 		percentByCountries=loader.getPercentByCountries();
 		peopleByCountrie=loader.getPeopleByCountrie();
 		names=loader.getNames();
@@ -33,10 +35,11 @@ public class Generator {
 		nameIndex=0;
 		surnameIndex=0;
 		amountOfPeople=loader.getPopulation();
+		index = 0;
+		this.array = array;
 	}	
 	
-	
-	public Person generate(int index, int array) throws IOException {			 
+	public Person generate() throws IOException {			 
 		int plus=index*array;
 
 		if(surnameIndex<surnames.length-1) {
@@ -47,9 +50,11 @@ public class Generator {
 		}
 
 		LocalDate date=getBornDate(index);
-		return new Person(IDS[array]+(index),names[nameIndex]+" "+surnames[surnameIndex],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
+		Person p = new Person(IDS[array]+(index),names[nameIndex]+" "+surnames[surnameIndex],gender(),date,height(date),COUNTRIES[getCountry(plus)]);
+		index++;
+		return p;
 	}
-
+	
 	public int getCountry(int num) {
 		int cnty=(num%(COUNTRIES.length)/2);
 		boolean available=false;

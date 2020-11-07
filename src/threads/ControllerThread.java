@@ -90,14 +90,14 @@ public class ControllerThread extends Thread {
 	public void create() throws IOException {
 		int cant=Integer.parseInt(aux);
 		Loader loader=new Loader(cant);
-		Generator g1= new Generator(loader);
-		Generator g2= new Generator(loader);
-		Generator g3= new Generator(loader);
-		Generator g4= new Generator(loader);
-		FilledThread thread1= new FilledThread(cant,g1,data.getT1(),1);
-		FilledThread thread2=new FilledThread(cant,g2,data.getT2(),2);
-		FilledThread thread3= new FilledThread(cant,g3,data.getT3(),3);
-		FilledThreadGUI thread4= new FilledThreadGUI(cant,g4,data.getT4(),4, gui, pb);
+		Generator g1= new Generator(loader,1);
+		Generator g2= new Generator(loader,2);
+		Generator g3= new Generator(loader,3);
+		Generator g4= new Generator(loader,4);
+		FilledThread thread1= new FilledThread(cant,g1,data.getT1());
+		FilledThread thread2=new FilledThread(cant,g2,data.getT2());
+		FilledThread thread3= new FilledThread(cant,g3,data.getT3());
+		FilledThreadGUI thread4= new FilledThreadGUI(cant,g4,data.getT4(), gui, pb);
 		thread1.start();
 		thread2.start();
 		thread3.start();
