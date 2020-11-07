@@ -33,8 +33,8 @@ public class Create {
     private WebView webView;
 
     @FXML
-    void initialize() {
-    	refreshImage();
+    void initialize() throws InterruptedException {
+    	loadImage();
     	initializeChoiceBox();
     	datePicker.setValue(LocalDate.now());
     }
@@ -46,12 +46,12 @@ public class Create {
     	nationalityChoiceBox.setValue(Generator.COUNTRIES[0]);
     }
     
-    private void refreshImage() {
+    private void loadImage() throws InterruptedException {
     	webView.getEngine().load("https://thispersondoesnotexist.com");
     }
     
     @FXML
-    void accept(ActionEvent event) {
+    void accept(ActionEvent event) throws InterruptedException {
     	if(name.getText().equals("")) {
     		ControllerGUI.loadAlert(AlertType.ERROR,"NAME EMPTY", "You must type the name", "Please type the name and try again.");
     	}else if(height.getText().equals(""))
@@ -67,7 +67,7 @@ public class Create {
     			double h = Double.parseDouble(height.getText());
     			ControllerGUI.data.add(n, (g.equals(Person.GENDER_M)?true:false), date, h, nationality);
     			ControllerGUI.loadAlert(AlertType.INFORMATION, "SUSSESFUL", "The person has been added correctly", "continue adding");
-    			refreshImage();
+    			loadImage();
     		}catch (NumberFormatException e){
     			ControllerGUI.loadAlert(AlertType.ERROR,"HEIGHT ERROR", "You must type a number in the height field", "Please fix and try again.");
     		}

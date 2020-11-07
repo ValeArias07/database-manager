@@ -15,7 +15,6 @@ public class DataBase implements Serializable{
 	private AVL<String, Person> t4;
 	private int actualTree;
 	private int addAmount;
-	private Person actualPerson;
 	
 	public DataBase() {
 		 actualTree=1;
@@ -24,7 +23,6 @@ public class DataBase implements Serializable{
 		 t2= new AVL<String, Person>();
 		 t3= new AVL<String, Person>();
 		 t4= new AVL<String, Person>();
-		 actualPerson = null;
 	}
 	
 	public void add(String name, boolean gender, LocalDate bornDate, double height, String nationality) {
@@ -62,8 +60,8 @@ public class DataBase implements Serializable{
 		return r;
 	}
 	
-	public void create(String amount) {
-		ControllerThread controller= new ControllerThread(this, ControllerThread.CREATE_OPTION, amount);
+	public void create(int amount) {
+		ControllerThread controller= new ControllerThread(this, ControllerThread.CREATE_OPTION, amount+"");
 		controller.start();
 		while(controller.isAlive()) {
 
@@ -113,13 +111,5 @@ public class DataBase implements Serializable{
 
 	public AVL<String, Person> getT4() {
 		return t4;
-	}
-
-	public Person getActualPerson() {
-		return actualPerson;
-	}
-
-	public void setActualPerson(Person actualPerson) {
-		this.actualPerson = actualPerson;
 	}
 }

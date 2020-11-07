@@ -87,15 +87,9 @@
          </children>
       </VBox>
       <TextField fx:id="searchParam" layoutX="36.0" layoutY="169.0" prefHeight="25.0" prefWidth="337.0" />
-      <ChoiceBox fx:id="criterionChoiceBox" layoutX="387.0" layoutY="139.0" prefHeight="25.0" prefWidth="163.0" />
       <Label layoutX="36.0" layoutY="143.0" prefHeight="17.0" prefWidth="122.0" text="Write for search " textFill="WHITE" />
-      <Label layoutX="383.0" layoutY="120.0" text="Choose a criteria for searching" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button disable="true" layoutX="385.0" layoutY="330.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="167.0" text="Delete" />
-      <Button disable="true" layoutX="385.0" layoutY="361.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="167.0" text="Update" />
+      <Button fx:id="delete" disable="true" layoutX="385.0" layoutY="330.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="167.0" text="Delete" />
+      <Button fx:id="update" disable="true" layoutX="385.0" layoutY="361.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="167.0" text="Update" />
       <WebView fx:id="webView" layoutX="384.0" layoutY="169.0" prefHeight="151.0" prefWidth="170.0" />
       <Pane layoutX="14.0" layoutY="25.0" prefHeight="95.0" prefWidth="573.0" style="-fx-background-radius: 10 10 10 10; -fx-background-color: #ffffff;">
          <children>
@@ -106,6 +100,6 @@
             </ImageView>
          </children>
       </Pane>
-      <Button layoutX="321.0" layoutY="139.0" mnemonicParsing="false" onAction="#search" text="Search" />
+      <Button layoutX="443.0" layoutY="139.0" mnemonicParsing="false" onAction="#search" text="Search" />
    </children>
 </AnchorPane>
