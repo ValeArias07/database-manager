@@ -7,14 +7,15 @@ import model.Person;
 import model.DataBase;
 public class ControllerThread extends Thread {
 
+	public static final String SEARCH_OPTION="Search";
+	public static final String REMOVE_OPTION="Remove";
+	public static final String CREATE_OPTION="Create";
+	
 	private DataBase data;
 	private String option;
 	private Person personFound;
 	private String aux;
 	private boolean finish;
-	public static final String SEARCH_OPTION="Search";
-	public static final String REMOVE_OPTION="Remove";
-	public static final String CREATE_OPTION="Create";
 	
 	public ControllerThread(DataBase data, String option, String aux) {
 		this.data=data;
@@ -47,22 +48,30 @@ public class ControllerThread extends Thread {
 		s2.start();
 		s3.start();
 		s4.start();
-		
 		boolean found=false;
-		while(s1.isAlive() || s2.isAlive() || s3.isAlive() || s4.isAlive() && !found)
-		if(s1.getPersonFound()!=null) {
-			personFound=s1.getPersonFound();
-			found=true;
-		}else if(s2.getPersonFound()!=null) {
-			personFound=s2.getPersonFound();
-			found=true;
-		}else if(s3.getPersonFound()!=null) {
-			personFound=s3.getPersonFound();
-			found=true;
-		}else if(s4.getPersonFound()!=null) {
-			personFound=s4.getPersonFound();
-			found=true;
+		while((s1.isAlive() || s2.isAlive() || s3.isAlive() || s4.isAlive())&& !found) {
+			if(s1.getPersonFound()!=null) {
+				personFound=s1.getPersonFound();
+				System.out.println("hilo 1 found"+personFound.getName());
+				found=true;
+			}else if(s2.getPersonFound()!=null) {
+				personFound=s2.getPersonFound();
+				System.out.println("hilo 2 found"+personFound.getName());
+				found=true;
+			}else if(s3.getPersonFound()!=null) {
+				personFound=s3.getPersonFound();
+				System.out.println("hilo 3 found"+personFound.getName());
+				found=true;
+			}else if(s4.getPersonFound()!=null) {
+				personFound=s4.getPersonFound();
+				System.out.println("hilo 4 found"+personFound.getName());
+				found=true;
+			}
 		}
+		s1.join();
+		s2.join();
+		s3.join();
+		s4.join();
 	}
 
 	public void create() throws IOException {
@@ -106,6 +115,10 @@ public class ControllerThread extends Thread {
 		r2.join();
 		r3.join();
 		r4.join();
+	}
+	
+	public void setPersonFound(Person pf) {
+		personFound = pf;
 	}
 	
 	public Person getPersonFound() {

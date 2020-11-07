@@ -61,7 +61,7 @@ public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> imp
 	
     @Override
 	public void insert(K key, V value) {
-    	root = insert((NodeAVL<K,V>)root, key, value);
+    	super.root = insert((NodeAVL<K,V>)super.root, key, value);
     	size++;
     }
     
@@ -109,7 +109,7 @@ public class AVL <K extends Comparable <K>, V> extends BinarySearchTree<K,V> imp
 
 	@Override
 	public NodeInterface<K,V> delete(K key) {
-		root = delete((NodeAVL<K, V>) root, key);
+		super.root = delete((NodeAVL<K, V>)super.root, key);
 		size--;
 		return null;
 	}

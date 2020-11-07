@@ -76,5 +76,4 @@ public class Person {
 		String genderText=(gender==false ? "Female":"Male");
 		return "ID: "+ id+ "\nName: "+name+"\nGender: "+genderText+"\nBorn Date: "+ bornDate.toString()+"\nHeight: "+height+"\nNationality: "+nationality+"\n_________________";
 	}
-	
 }

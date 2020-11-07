@@ -15,6 +15,7 @@ public class DataBase implements Serializable{
 	private AVL<String, Person> t4;
 	private int actualTree;
 	private int addAmount;
+	private Person actualPerson;
 	
 	public DataBase() {
 		 actualTree=1;
@@ -23,6 +24,7 @@ public class DataBase implements Serializable{
 		 t2= new AVL<String, Person>();
 		 t3= new AVL<String, Person>();
 		 t4= new AVL<String, Person>();
+		 actualPerson = null;
 	}
 	
 	public void add(String name, boolean gender, LocalDate bornDate, double height, String nationality) {
@@ -31,12 +33,25 @@ public class DataBase implements Serializable{
 
 		if(r==1) {
 			t1.insert(p.getId(), p);
+			System.out.println("T1: "+ t1.getRoot().getValue());
+			System.out.println("T1:"+ t1.getRoot().getKey());
+			System.out.println("T1=== \n" + t1.search(p.getId()));
+			System.out.println(p.getId().equals("ADSHSKA0")+"ALo");
 		}else if(r==2) {
 			t2.insert(p.getId(), p);
+			System.out.println("T2: "+ t2.getRoot().getValue());
+			System.out.println("T2:"+ t2.getRoot().getKey());
+			System.out.println("T2=== \n" +t2.search(p.getId()));
 		}else if(r==3) {
 			t3.insert(p.getId(), p);
+			System.out.println("T3: "+ t3.getRoot().getValue());
+			System.out.println("T2:"+ t2.getRoot().getKey());
+			System.out.println("T3=== \n" +t3.search(p.getId()));
 		}else if(r==4) {
 			t4.insert(p.getId(), p);
+			System.out.println("T4: "+ t4.getRoot().getValue());
+			System.out.println("T2:"+ t2.getRoot().getKey());
+			System.out.println("T4=== \n" +t4.search(p.getId()));
 		}
 		
 		addAmount++;
@@ -103,5 +118,13 @@ public class DataBase implements Serializable{
 
 	public AVL<String, Person> getT4() {
 		return t4;
+	}
+
+	public Person getActualPerson() {
+		return actualPerson;
+	}
+
+	public void setActualPerson(Person actualPerson) {
+		this.actualPerson = actualPerson;
 	}
 }
