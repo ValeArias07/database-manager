@@ -1,6 +1,6 @@
 package structures;
 
-public interface NodeInterface<K extends Comparable<K>, V> {
+public interface NodeInterface<K extends Comparable<K>, V>{
 	
 	public void setFather(NodeInterface<K,V> f);
 	public void setLeft(NodeInterface<K,V> l);

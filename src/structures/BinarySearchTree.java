@@ -1,6 +1,9 @@
 package structures;
 
-public class BinarySearchTree <K extends Comparable<K>, V> implements BinarySearchTreeI<K, V>{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class BinarySearchTree <K extends Comparable<K>, V> implements BinarySearchTreeI<K, V>, Serializable{
 
 	protected NodeInterface<K, V> root;
 	protected int size;

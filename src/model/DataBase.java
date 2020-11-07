@@ -35,23 +35,18 @@ public class DataBase implements Serializable{
 			t1.insert(p.getId(), p);
 			System.out.println("T1: "+ t1.getRoot().getValue());
 			System.out.println("T1:"+ t1.getRoot().getKey());
-			System.out.println("T1=== \n" + t1.search(p.getId()));
-			System.out.println(p.getId().equals("ADSHSKA0")+"ALo");
 		}else if(r==2) {
 			t2.insert(p.getId(), p);
 			System.out.println("T2: "+ t2.getRoot().getValue());
 			System.out.println("T2:"+ t2.getRoot().getKey());
-			System.out.println("T2=== \n" +t2.search(p.getId()));
 		}else if(r==3) {
 			t3.insert(p.getId(), p);
 			System.out.println("T3: "+ t3.getRoot().getValue());
 			System.out.println("T2:"+ t2.getRoot().getKey());
-			System.out.println("T3=== \n" +t3.search(p.getId()));
 		}else if(r==4) {
 			t4.insert(p.getId(), p);
 			System.out.println("T4: "+ t4.getRoot().getValue());
 			System.out.println("T2:"+ t2.getRoot().getKey());
-			System.out.println("T4=== \n" +t4.search(p.getId()));
 		}
 		
 		addAmount++;

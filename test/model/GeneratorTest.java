@@ -35,7 +35,7 @@ public class GeneratorTest {
 	
 	@Test
 	public void add() throws IOException {
-		setUp2();
+		DataBase data= new DataBase();
 		data.add("Sofia", false, LocalDate.of(2001, 3, 26), 1.45 , "Argentina");
 		data.add("Alejandro", true, LocalDate.of(2002, 12, 28), 1.32 , "Costa Rica");
 		data.add("Valentina", false, LocalDate.of(2001, 4, 18), 1.53 , "Colombia");
@@ -45,13 +45,11 @@ public class GeneratorTest {
 		System.out.println(data.search("ADSHSKA0"));
 		System.out.println(data.search("ADSHSKA1"));
 		System.out.println(data.search("ADSHSKA2"));
-	
 		System.out.println(data.search("ADSHSKA3"));
-		//System.out.println(data.search("ADSHSKA4"));
+		System.out.println(data.search("ADSHSKA4"));
 		System.out.println(data.getT1().getSize());
 		System.out.println(data.getT2().getSize());
 		System.out.println(data.getT3().getSize());
 		System.out.println(data.getT4().getSize());
 	}
 }
-

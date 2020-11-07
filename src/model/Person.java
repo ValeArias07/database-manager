@@ -1,7 +1,9 @@
 package model;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person {
+@SuppressWarnings("serial")
+public class Person implements Serializable{
 
 	public static final String GENDER_M = "Male";
 	public static final String GENDER_F = "Female";

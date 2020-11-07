@@ -1,6 +1,9 @@
 package structures;
 
-public class Node<K extends Comparable<K>,V> implements NodeInterface<K, V>{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Node<K extends Comparable<K>,V> implements NodeInterface<K, V>, Serializable{
 
 	protected NodeInterface<K,V> father;
 	protected NodeInterface<K,V> left;
