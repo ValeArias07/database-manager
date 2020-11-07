@@ -2,7 +2,7 @@ package model;
 import java.io.IOException;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
-import model.DataBase;
+
 
 public class GeneratorTest {
 	private DataBase data;
@@ -11,11 +11,15 @@ public class GeneratorTest {
 		data= new DataBase();
 	}
 	
-	void setUp2() throws IOException{
+	/**
+	 * void setUp2() throws IOException{
 		String amount="10000000";
 		data= new DataBase();
 		//data.create(amount);
 	}
+	 * @throws IOException
+	 */
+	
 	/**
 	 * 	
 	@Test
@@ -41,9 +45,9 @@ public class GeneratorTest {
 		System.out.println(data.search("ADSHSKA0"));
 		System.out.println(data.search("ADSHSKA1"));
 		System.out.println(data.search("ADSHSKA2"));
+	
 		System.out.println(data.search("ADSHSKA3"));
-		System.out.println(data.search("ADSHSKA4"));
-		System.out.println(data.search("ADSHSKA5"));
+		//System.out.println(data.search("ADSHSKA4"));
 		System.out.println(data.getT1().getSize());
 		System.out.println(data.getT2().getSize());
 		System.out.println(data.getT3().getSize());

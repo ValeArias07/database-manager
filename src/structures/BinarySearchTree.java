@@ -57,7 +57,7 @@ public class BinarySearchTree <K extends Comparable<K>, V> implements BinarySear
 	@Override
 	public V search(K key) {
 		if(root!=null) {
-			if(root.getKey()==key)
+			if(root.getKey().equals(key))
 				return root.getValue();
 			
 			NodeInterface<K, V> aux = (key.compareTo(root.getKey())<0)?root.getLeft():root.getRight();
@@ -77,8 +77,8 @@ public class BinarySearchTree <K extends Comparable<K>, V> implements BinarySear
 				}else
 					return aux.getValue();
 			}	
+			
 		}
-		
 		return null;
 	}
 
