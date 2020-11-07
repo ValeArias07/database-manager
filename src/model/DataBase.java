@@ -63,9 +63,6 @@ public class DataBase implements Serializable{
 	public void create(int amount) {
 		ControllerThread controller= new ControllerThread(this, ControllerThread.CREATE_OPTION, amount+"");
 		controller.start();
-		while(controller.isAlive()) {
-
-		}
 	}
 	
 	public Person search(String id) {

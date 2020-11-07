@@ -32,13 +32,17 @@ public class ControllerGUI {
     
     public ControllerGUI() {
     	data = new DataBase();
-    	generatePage = new Generate();
+    	generatePage = new Generate(this);
     	menuPage = new Menu(new Create(), new Search(), new UpdateAndDelete());
     }
     
     @FXML
     void LoadData(ActionEvent event) throws IOException, ClassNotFoundException {
     	load();
+    	loadMenu();
+    }
+    
+    public void loadMenu() throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(MENU_FXML));
 		fxmlLoader.setController(menuPage);
 		Parent parent = fxmlLoader.load();
