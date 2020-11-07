@@ -100,4 +100,20 @@ public class DataBase implements Serializable{
 	public AVL<String, Person> getT4() {
 		return t4;
 	}
+
+	public void setT1(AVL<String, Person> t1) {
+		this.t1 = t1;
+	}
+
+	public void setT2(AVL<String, Person> t2) {
+		this.t2 = t2;
+	}
+
+	public void setT3(AVL<String, Person> t3) {
+		this.t3 = t3;
+	}
+
+	public void setT4(AVL<String, Person> t4) {
+		this.t4 = t4;
+	}
 }

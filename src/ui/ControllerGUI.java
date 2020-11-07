@@ -27,16 +27,16 @@ public class ControllerGUI {
     @FXML
     private AnchorPane buttonAnchor;
 
-    public static DataBase data;
+	public static DataBase data;
     private Generate generatePage;
     private Menu menuPage;
     private ProgressBarController pb;
     
     public ControllerGUI() {
+    	data = new DataBase();
     	pb =  new ProgressBarController();
     	generatePage = new Generate(this, pb);
     	menuPage = new Menu(new Create(), new Search(), new UpdateAndDelete());
-    	data = new DataBase();
     }
     
     @FXML
@@ -78,7 +78,7 @@ public class ControllerGUI {
 				FileInputStream fi = new FileInputStream(SERIAL_ROUTE);
 				ObjectInputStream oi;
 				oi = new ObjectInputStream(fi);
-				data = (DataBase)oi.readObject();
+				ControllerGUI.data = (DataBase)oi.readObject();
 
 			} catch (IOException e) {
 				System.out.println(e.getMessage());
