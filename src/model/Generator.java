@@ -39,7 +39,7 @@ public class Generator {
 	public Person generate(int index, int array) throws IOException {			 
 		int plus=index*array;
 
-		if(surnameIndex<surnames.length) {
+		if(surnameIndex<surnames.length-1) {
 			surnameIndex++;
 		}else {
 			surnameIndex=0;

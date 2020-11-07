@@ -91,9 +91,6 @@ public class DataBase implements Serializable{
 		ControllerThread controller= new ControllerThread(this, ControllerThread.REMOVE_OPTION, id);
 		controller.start();
 		Person p=null;
-		while(controller.isAlive()) {
-			
-		}
 		return p;
 	}
 

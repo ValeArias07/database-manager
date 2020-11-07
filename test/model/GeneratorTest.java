@@ -20,20 +20,16 @@ public class GeneratorTest {
 	 * @throws IOException
 	 */
 	
-	/**
-	 * 	
+
 	@Test
 	public void generateTest() throws IOException, InterruptedException {
 		setUp1();
-		String amount="10000000";
+		int amount=10000000;
 		long time=System.currentTimeMillis();
 		data.create(amount);
 		System.out.println(System.currentTimeMillis()-time);
 	}
-	 * 
-	 */
-	
-	@Test
+
 	public void add() throws IOException {
 		DataBase data= new DataBase();
 		data.add("Sofia", false, LocalDate.of(2001, 3, 26), 1.45 , "Argentina");
