@@ -21,7 +21,7 @@ public class FilledThread extends Thread{
 	public void run() {	
 		int max=0;
 		long init = System.currentTimeMillis();
-		while(max<=cant/4) {
+		while(max<cant/4) {
 			try {
 				Person p=random.generate();
 				tree.insert(p.getId(), p);

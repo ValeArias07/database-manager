@@ -5,6 +5,7 @@ import model.Generator;
 import model.Loader;
 import model.Person;
 import model.ProgressBarController;
+import ui.ControllerGUI;
 import ui.Generate;
 import model.DataBase;
 public class ControllerThread extends Thread {
@@ -65,19 +66,15 @@ public class ControllerThread extends Thread {
 		while((s1.isAlive() || s2.isAlive() || s3.isAlive() || s4.isAlive())&& !found) {
 			if(s1.getPersonFound()!=null) {
 				personFound=s1.getPersonFound();
-				System.out.println("hilo 1 found"+personFound.getName());
 				found=true;
 			}else if(s2.getPersonFound()!=null) {
 				personFound=s2.getPersonFound();
-				System.out.println("hilo 2 found"+personFound.getName());
 				found=true;
 			}else if(s3.getPersonFound()!=null) {
 				personFound=s3.getPersonFound();
-				System.out.println("hilo 3 found"+personFound.getName());
 				found=true;
 			}else if(s4.getPersonFound()!=null) {
 				personFound=s4.getPersonFound();
-				System.out.println("hilo 4 found"+personFound.getName());
 				found=true;
 			}
 		}
@@ -108,6 +105,13 @@ public class ControllerThread extends Thread {
 			thread2.join();
 			thread3.join();
 			thread4.join();
+			
+			System.out.println(data.getT1().getSize());
+			System.out.println(data.getT2().getSize());
+			System.out.println(data.getT3().getSize());
+			System.out.println(data.getT4().getSize());
+			System.out.println(data.getT1().getSize()+data.getT2().getSize()+data.getT3().getSize()+data.getT4().getSize());
+			
 			finish=true;
 		}catch(InterruptedException e) {
 			System.out.println(e.getMessage());

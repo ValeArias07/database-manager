@@ -14,7 +14,7 @@ public class FillDataBase {
 		this.pb = pb;
 	}
 	
-	public void create(int amount ) {
+	public void create(int amount) {
 		ControllerThread controller= new ControllerThread(ControllerGUI.data, ControllerThread.CREATE_OPTION, amount+"", guiProgress, pb);
 		controller.start();
 	}

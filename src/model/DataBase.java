@@ -30,20 +30,12 @@ public class DataBase implements Serializable{
 
 		if(r==1) {
 			t1.insert(p.getId(), p);
-			System.out.println("T1: "+ t1.getRoot().getValue());
-			System.out.println("T1:"+ t1.getRoot().getKey());
 		}else if(r==2) {
 			t2.insert(p.getId(), p);
-			System.out.println("T2: "+ t2.getRoot().getValue());
-			System.out.println("T2:"+ t2.getRoot().getKey());
 		}else if(r==3) {
 			t3.insert(p.getId(), p);
-			System.out.println("T3: "+ t3.getRoot().getValue());
-			System.out.println("T2:"+ t2.getRoot().getKey());
 		}else if(r==4) {
 			t4.insert(p.getId(), p);
-			System.out.println("T4: "+ t4.getRoot().getValue());
-			System.out.println("T2:"+ t2.getRoot().getKey());
 		}
 		
 		addAmount++;

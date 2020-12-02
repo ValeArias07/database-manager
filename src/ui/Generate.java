@@ -43,6 +43,7 @@ public class Generate{
     	try {
 			int cant = Integer.parseInt(amount.getText());
 			fdb.create(cant);
+			
 		}catch (NumberFormatException e){
 			ControllerGUI.loadAlert(AlertType.ERROR,"AMOUNT ERROR", "You must type a number in the amount field", "Please fix and try again.");
 		}
