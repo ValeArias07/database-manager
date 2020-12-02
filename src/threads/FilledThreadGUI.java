@@ -6,22 +6,25 @@ import model.Generator;
 import model.Person;
 import model.ProgressBarController;
 import structures.AVL;
+import ui.ControllerGUI;
 import ui.Generate;
 
 public class FilledThreadGUI extends Thread{
 	private Generator random;
 
 	private AVL<String, Person> tree;
+	private int index;
 	private int cant;
 	private Generate gui;
 	private ProgressBarController pb;
 	
-	public FilledThreadGUI(int cant,Generator random, AVL<String, Person> t1, Generate gui, ProgressBarController pb) {
+	public FilledThreadGUI(int cant,Generator random, int index, Generate gui, ProgressBarController pb) {
+		this.index = index;
 		this.random=random;
-		this.tree=t1;
 		this.cant=cant;
 		this.gui = gui;
 		this.pb = pb;
+		tree= new AVL<String, Person>();
 	}
 
 	@Override
@@ -43,6 +46,7 @@ public class FilledThreadGUI extends Thread{
 				e.printStackTrace();
 			}
 		}
+		setTree();
 		long finit = System.currentTimeMillis();
 		updateTime(finit-init);
 		setEnableButton();
@@ -72,5 +76,33 @@ public class FilledThreadGUI extends Thread{
 				gui.setEnableButton();
 			}
 		});
+	}
+	
+	private void setTree() {
+		if(index==1) {
+			Platform.runLater(new Thread() {
+				public void run() {
+					ControllerGUI.data.setT1(tree);
+				}
+			});
+		}else if(index==2) {
+			Platform.runLater(new Thread() {
+				public void run() {
+					ControllerGUI.data.setT1(tree);
+				}
+			});
+		}else if(index==3) {
+			Platform.runLater(new Thread() {
+				public void run() {
+					ControllerGUI.data.setT1(tree);
+				}
+			});
+		}else if(index==4) {
+			Platform.runLater(new Thread() {
+				public void run() {
+					ControllerGUI.data.setT1(tree);
+				}
+			});
+		}
 	}
 }
